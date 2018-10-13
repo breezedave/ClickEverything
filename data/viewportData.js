@@ -1,7 +1,7 @@
 let viewportData = [
     {width: 1024, height: 1366},
     {width: 768, height: 1024},
-    {width: 768, height: 1024},/*
+    {width: 768, height: 1024},
     {width: 768, height: 1024},
     {width: 768, height: 1024},
     {width: 768, height: 1024},
@@ -25,7 +25,7 @@ let viewportData = [
     {width: 1080, height: 1920},
     {width: 768, height: 1366},
     {width: 1024, height: 1280},
-    {width: 800, height: 1280},*/
+    {width: 800, height: 1280},
     {width: 768, height: 1024}
 ]
 

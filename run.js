@@ -45,11 +45,7 @@ async function clickAllTheThings(page, journey) {
         let btn = btns[i];
 
         await page.click(`#${btn}`);
-        await page.evaluate((i) => {
-            let buttons = document.querySelectorAll('input[type="button"], button');
-
-            if(typeof buttons[i] !== "undefined") buttons[i].scrollIntoView();
-        });
+        await page.waitFor(500);
         await snap(page, journey, btn);
     }
 }
