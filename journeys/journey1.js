@@ -1,12 +1,10 @@
 const actions = [
-    ["goto", "https://github.com/GoogleChrome/puppeteer/issues/2333"],
-    ["snap"],
-    ["click", ".reponav-item"],
+    ["goto", "https://demos.telerik.com/kendo-ui/websushi/"],
     ["snap"]
 ]
 
 const journey = {
-    name: "Doing a thing",
+    name: "Single Page Test",
     actions: actions
 }
 

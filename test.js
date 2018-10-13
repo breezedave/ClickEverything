@@ -25,6 +25,28 @@ function getJourneys() {
     return journeys.map(_ => `${journeyLoc}${_}`);
 }
 
+async function clickAllTheThings(page, journey) {
+    const btns = await page.evaluate(() => {
+        let buttons = document.querySelectorAll('input[type="button"], button');
+        let buttonIds = [];
+
+        buttons.forEach((_, i) => {
+            if(typeof _.id === "undefined" || _.id === "") _.id = "temp" + i;
+        });
+
+        for(let i = 0; i < buttons.length; i++) {
+            buttonIds.push(buttons[i].id);
+        }
+
+        return buttonIds;
+    });
+
+    for(let i = 0; i < btns.length; i++) {
+        await page.click(`#${btns[i]}`);
+        await snap(page, journey, btns[i]);
+    }
+}
+
 
 (async () => {
   for(let i = 0; i < viewPorts.length; i++) {
@@ -50,14 +72,8 @@ function getJourneys() {
               await page[action[0]].apply(page, action.slice(1,action.length));
           }
       }
+
+      await clickAllTheThings(page, journey.name);
   }
   browser.close();
 })();
-
-
-/*
-await page.goto('https://github.com/GoogleChrome/puppeteer/issues/2333');
-page.waitForSelector(".reponav-item");
-page.click(".reponav-item");
-page.waitForNavigation();
-*/
