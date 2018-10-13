@@ -1,0 +1,11 @@
+{
+  "name": "ClickEverything",
+  "scripts": {
+    "start": "node run.js"
+  },
+  "dependencies": {
+    "fs": "*",
+    "puppeteer": "*",
+    "rimraf": "*"
+  }
+}
