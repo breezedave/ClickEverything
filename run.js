@@ -44,9 +44,13 @@ async function clickAllTheThings(page, journey) {
     for(let i = 0; i < btns.length; i++) {
         let btn = btns[i];
 
-        await page.click(`#${btn}`);
-        await page.waitFor(500);
-        await snap(page, journey, btn);
+        try {
+            await page.click(`#${btn}`);
+            await page.waitFor(500);
+            await snap(page, journey, btn);
+        } catch (err) {
+            console.log(`Clicking ${btn} failed.`);
+        }
     }
 }
 
@@ -69,14 +73,18 @@ async function clickAllTheThings(page, journey) {
       for(let i = 0; i < journey.actions.length; i++) {
           let action = journey.actions[i];
 
-          if(action[0] === "snap") {
-              await snap(page, journey.name, i);
-          } else {
-              await page[action[0]].apply(page, action.slice(1,action.length));
+          switch (action[0]) {
+                case "snap":
+                    await snap(page, journey.name, i);
+                    break;
+                case "clickAllTheThings":
+                    await clickAllTheThings(page, journey.name);
+                    break;
+                default:
+                    await page[action[0]].apply(page, action.slice(1,action.length));
+                    break;
           }
       }
-
-      await clickAllTheThings(page, journey.name);
   }
   browser.close();
 })();

@@ -1,4 +1,5 @@
 let viewportData = [
+    /*
     {width: 1024, height: 1366},
     {width: 768, height: 1024},
     {width: 768, height: 1024},
@@ -19,6 +20,7 @@ let viewportData = [
     {width: 1024, height: 768},
     {width: 1024, height: 768},
     {width: 1024, height: 768},
+    */
     {width: 960, height: 600},
     {width: 1280, height: 800},
     {width: 850, height: 1280},
